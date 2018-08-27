@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Seeker extends Component {
   searchRef = React.createRef();
 
-  handleData = e => {
+  handleInput = e => {
     e.preventDefault();
     console.log(this.searchRef.current.value);
     // We get value from input
@@ -14,7 +14,7 @@ class Seeker extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleData}>
+      <form onSubmit={this.handleInput}>
         <div className="row">
           <div className="form-group col-md-8">
             <input

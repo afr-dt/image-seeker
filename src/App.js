@@ -4,15 +4,31 @@ import Seeker from './components/Seeker';
 class App extends Component {
   constructor() {
     super();
-    this.state = { search: 'Cafecitos' };
+    this.state = {
+      search: '',
+      images: []
+    };
   }
 
-  searchData = search => {
-    console.log(search);
+  requestApi = () => {
+    const inputUser = this.state.search;
+    const url = `https://pixabay.com/api/?key=9931281-d2f7fbdad64ff56f1e152f496&q=${inputUser}`;
 
-    this.setState({
-      search
-    });
+    fetch(url)
+      .then(res => res.json())
+      .then(result => this.setState({ images: result.hits }));
+  };
+
+  searchData = search => {
+    // console.log(search);
+    this.setState(
+      {
+        search
+      },
+      () => {
+        this.requestApi();
+      }
+    );
   };
 
   render() {
