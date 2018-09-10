@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+// Components
 import Seeker from './components/Seeker';
-
+import Result from './components/Result';
 class App extends Component {
   constructor() {
     super();
@@ -11,8 +12,10 @@ class App extends Component {
   }
 
   requestApi = () => {
+    // 10069061-f3ccd001d44a51c6f0ae4d8ef
+    const api_key = '10069061-f3ccd001d44a51c6f0ae4d8ef';
     const inputUser = this.state.search;
-    const url = `https://pixabay.com/api/?key=9931281-d2f7fbdad64ff56f1e152f496&q=${inputUser}`;
+    const url = `https://pixabay.com/api/?key=${api_key}=${inputUser}`;
 
     fetch(url)
       .then(res => res.json())
@@ -37,8 +40,8 @@ class App extends Component {
         <div className="jumbotron">
           <p className="lead text-center">Image seeker...</p>
           <Seeker searchData={this.searchData} />
-          {this.state.search}
         </div>
+        <Result images={this.state.images} />
       </div>
     );
   }
