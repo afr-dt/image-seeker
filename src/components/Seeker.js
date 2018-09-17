@@ -5,7 +5,7 @@ class Seeker extends Component {
 
   handleInput = e => {
     e.preventDefault();
-    console.log(this.searchRef.current.value);
+    // console.log(this.searchRef.current.value);
     // We get value from input
     const search = this.searchRef.current.value;
     // We send to main component(App.js)

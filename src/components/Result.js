@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Image from './Image';
+import Pagination from './Pagination';
 class Result extends Component {
   showImages = () => {
-    console.log(this.props.images);
-
+    // console.log(this.props.images);
     const { images } = this.props;
-
     if (images.length === 0) return null;
-
-    console.log(images);
+    // console.log(images);
     return (
       <React.Fragment>
         <div className="col-12 p-5 row ">
@@ -16,6 +14,10 @@ class Result extends Component {
             <Image key={image.id} image={image} />
           ))}
         </div>
+        <Pagination
+          previousPage={this.props.previousPage}
+          nextPage={this.props.nextPage}
+        />
       </React.Fragment>
     );
   };
